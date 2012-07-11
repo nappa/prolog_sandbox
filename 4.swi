@@ -1,0 +1,3 @@
+% from http://www.geocities.jp/m_hiroi/prolog/prolog01.html
+
+square(X, Y) :- Y is X * X.

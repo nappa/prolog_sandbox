@@ -1,0 +1,4 @@
+% from http://www.geocities.jp/m_hiroi/prolog/prolog01.html
+
+like(taro, coffee).
+like(hanako, tea).

@@ -1,0 +1,41 @@
+% http://www.geocities.jp/m_hiroi/prolog/prolog02.html
+
+first([X | Ys], X).
+rest([X | Ys], Ys).
+
+add_to_list(X, Ls, [X | Ls]).
+
+retrieve(1, [X | Ls], X).
+retrieve(N, [Y | Ls], X) :-
+  N > 1, N1 is N - 1, retrieve(N1, Ls, X).
+
+insert_at(1, X, Ls, [ X | Ls ]).
+insert_at(N, X, [Y | Ls], [Y | Zs]) :-
+  N > 1, N1 is N -1,
+  insert_at(N1, X, Ls, Zs).
+
+remove_at(1, [ X | Ls ], Ls).
+remove_at(N, [ X | Ls ], [X | Zs]) :-
+  N > 0, N1 is N - 1, remove_at(N1, Ls, Zs).
+
+
+my_length([], 0).
+my_length([X | Xs], N) :-
+  my_length(Xs, N1), N is N1 + 1.
+
+my_append([], Xs, Xs).
+my_append([X | Ls], Ys, [X | Zs]) :-
+  my_append(Ls, Ys, Zs).
+
+my_member(X, [X | Ls]).
+my_member(X, [Y | Ls]) :-
+  my_member(X, Ls).
+
+my_select(X, [X | Xs], Xs).
+my_select(X, [Y | Ys], [Y | Zs]) :-
+  my_select(X, Ys, Zs).
+
+selects([], Ys).
+selects([X | Xs], Ys) :-
+  select(X, Ys, Ys1), selects(Xs, Ys1).
+
