@@ -1,0 +1,3 @@
+% from http://www.geocities.jp/m_hiroi/prolog/prolog03.html
+
+ticket(Age, Money) :- Age < 13 -> Money is 500 ; Money is 1000.

@@ -1,0 +1,12 @@
+% http://www.geocities.jp/m_hiroi/prolog/prolog03.html
+
+% tail recursion
+fact(X, Sum) :- fact(X, 1, Sum).
+fact(X, Y, Sum) :- X > 0, Y1 is Y*X, X1 is X-1, fact(X1, Y1, Sum).
+fact(0, Sum, Sum).
+
+fibo(0, 0).
+fibo(N, F) :- fibo(N, 1, 0, F).
+fibo(1, A1, _, A1).
+fibo(N, A1, A2, F) :-
+  N > 1, N1 is N - 1, A3 is A1 + A2, fibo(N1, A3, A1, F).

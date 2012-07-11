@@ -1,0 +1,5 @@
+% http://www.geocities.jp/m_hiroi/prolog/prolog03.html
+
+my_between(L, H, L) :- L =< H.
+my_between(L, H, V) :- L < H, L1 is L + 1, between(L1, H, V).
+% ?- my_between(1, 5, X), write(X), nl, fail.

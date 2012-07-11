@@ -1,0 +1,17 @@
+% http://www.geocities.jp/m_hiroi/prolog/prolog03.html
+
+% failure-driven loop example
+
+foo(a).
+foo(b).
+foo(c).
+% ?- foo(X), write(X), nl, fail.
+
+echo :- repeat, read(X), echo_sub(X), !.
+echo_sub(X) :- X == end_of_file, !.
+echo_sub(X) :- write(X), nl, fail.
+% ?- echo.
+
+yes_or_no(X) :-
+  repeat, write('yes or no >'), read(X), (X == yes ; X == no), !.
+% ?- yes_or_no(X).

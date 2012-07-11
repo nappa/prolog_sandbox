@@ -1,0 +1,18 @@
+% from http://www.geocities.jp/m_hiroi/prolog/prolog03.html
+
+%retrieve(1, [X | Ls], X).
+%retrieve(N, [Y | Ls], X) :-
+%  N > 1, N1 is N - 1, retrieve(N1, Ls, X).
+retrieve(1, [X | _ ], X).
+retrieve(N, [_ | Ls], X) :-
+  N > 1, N1 is N - 1, retrieve(N1, Ls, X).
+
+my_flatten([X | Xs], Ys) :-
+  my_flatten(X, Ys1), my_flatten(Xs, Ys2), append(Ys1, Ys2, Ys).
+my_flatten(X, [X]) :- atomic(X), X \== [].
+my_flatten([], []).
+
+take_integer([X | Xs], Ys) :-
+  take_integer(X, Ys1), take_integer(Xs, Ys2), append(Ys1, Ys2, Ys).
+take_integer(X, [X]) :- integer(X).
+take_integer(X, []).

@@ -1,0 +1,6 @@
+% from http://www.geocities.jp/m_hiroi/prolog/prolog03.html
+
+if(Test, Then, _) :- Test, !, Then.
+if(_, _, Else) :- Else.
+
+ticket(Age, Money) :- if(Age < 13, Money is 500, Money is 1000).
