@@ -1,0 +1,15 @@
+% from http://www.geocities.jp/m_hiroi/prolog/prolog04.html
+
+partition([X | Xs], Y, [X | Ls], Bs) :-
+  X =< Y, partition(Xs, Y, Ls, Bs).
+partition([X | Xs], Y, Ls, [X | Bs]) :-
+  X > Y,  partition(Xs, Y, Ls, Bs).
+partition([], Y, [], []).
+
+quick([X | Xs], Ys) :-
+  partition(Xs, X, Littles, Bigs),
+  quick(Littles, Ls),
+  quick(Bigs,    Bs),
+  append(Ls, [X | Bs], Ys).
+quick([], []).
+

@@ -1,0 +1,7 @@
+% from http://www.geocities.jp/m_hiroi/prolog/prolog04.html
+
+hanoi(1, From, To, _) :- format('~a to ~a~n', [From, To]).
+hanoi(N, From, To, Via) :-
+  N1 is N - 1, hanoi(N1, From, Via, To),
+  write('~a to ~a~n', [From, To]), nl,
+  hanoi(N1, Via, To, From).
